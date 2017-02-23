@@ -5,12 +5,7 @@ from rpg_art import Banner;
 from rpg_item import Item;
 import time;
 import rpg_opening;
-# import pyglet;
-
-# music = pyglet.resource.media('zelda_medley.mp3');
-# music.play();
-
-# pyglet.app.run();
+import os;
 
 rpg_opening;
 enemies = [Bokoblin(),Moblin(),Lizalfos()];
@@ -114,3 +109,4 @@ while hero.is_shopping():
 		print ""
 		time.sleep(1);
 		break;
+os.system("killall afplay");
