@@ -1,64 +1,24 @@
 from rpg_hero import Hero;
+from rpg_opening import hero;
 from rpg_monsters import Bokoblin, Moblin, Lizalfos;
 from rpg_art import Banner;
+from rpg_item import Item;
 import time;
+import rpg_opening;
+# import pyglet;
 
-hero = Hero();
+# music = pyglet.resource.media('zelda_medley.mp3');
+# music.play();
+
+# pyglet.app.run();
+
+rpg_opening;
 enemies = [Bokoblin(),Moblin(),Lizalfos()];
-
-print Banner;
-time.sleep(2.8);
-
-hero.name = raw_input("Greetings traveler! What is your name? ");
-region = raw_input("And from where do you hail? ");
-
-print 'Welcome brave %s, to a to a land of galantry and fearsome foes! ' % hero.name;
-print ""
-time.sleep(1.5);
-print "You must travel to Hyrule castle in order to stop a great evil that has taken over all of Hyrule.";
-print ""
-time.sleep(1.5);
-print "The evil has spread across the land and is even in this very forest.";
-print ""
-time.sleep(1.5);
-print "In order to defeat this evil, you must find the powers left by the Goddesses and cleanse this land!";
-print ""
-time.sleep(1.5);
-print "But before you leave to find the legends of the past to vanquish the darkness of the hour, you must be vigilant!";
-print ""
-if hero.name is "Andy":
-	time.sleep(1.5);
-	print "You must be VERY CAREFUL, Andy!";
-	print ""
-time.sleep(1.5);
-print "It's dangerous to go alone. Here, take this!";
-print ""
-time.sleep(3.5);
-print "< You recieve the [HERO'S SWORD] and [DEKU SHIELD]! >";
-print ""
-time.sleep(3.5);
-print "Farewell and good luck in your adventures!";
-print ""
-time.sleep(1.5);
-print ""
-time.sleep(1.5);
-print ""
-time.sleep(1.5);
-
-print "< FARON WOODS >";
-print ""
-time.sleep(1.5);
-print ""
-time.sleep(1.5);
-print "You are traveling down the path when you hear something up ahead...";
-print ""
-time.sleep(1.5);
-
-
+hero = Hero();
 for enemy in enemies:
 	# print vars(enemy);
 	# while hero.health > 0 and enemy.health > 0:
-	\
+	print ""
 	print "A %s has appeared and starts to attack you!" % enemy.name;
 	print ""
 	time.sleep(1.5);
@@ -99,49 +59,58 @@ for enemy in enemies:
 		print "You were defeated by the vicious %s." % enemy.name;
 		print ""
 		time.sleep(.8);
+		print "-- GAME OVER --";
+		time.sleep(2.8);
+		exit();
 
-"""
-In this simple RPG game, the hero fights the goblin. He has the options to:
+print ""
+time.sleep(1);
+print ""
+time.sleep(1);
+print ""
+time.sleep(1);
+print "Hey there Mr. fairy! Welcome to the item shop!";
+print ""
+time.sleep(1);
 
-1. fight goblin
-2. do nothing - in which case the goblin will attack him anyway
-3. flee
-
-"""
-# def main():
-# 	hero_health = 10
-# 	hero_power = 5
-# 	goblin_health = 6
-# 	goblin_power = 2
-
-# 	while goblin_health > 0 and hero_health > 0:
-# 		print "You have %d health and %d power." % (hero_health, hero_power)
-# 		print "The goblin has %d health and %d power." % (goblin_health, goblin_power)
-# 		print "What do you want to do?"
-# 		print "1. fight goblin"
-# 		print "2. do nothing"
-# 		print "3. flee"
-# 		print "> ",
-# 		input = raw_input()
-# 		if input == "1":
-# 			# Hero attacks goblin
-# 			goblin_health -= hero_power
-# 			print "You do %d damage to the goblin." % hero_power
-# 			if goblin_health <= 0:
-# 				print "The goblin is dead."
-# 		elif input == "2":
-# 			pass
-# 		elif input == "3":
-# 			print "Goodbye."
-# 			break
-# 		else:
-# 			print "Invalid input %r" % input
-
-# 		if goblin_health > 0:
-# 			# Goblin attacks hero
-# 			hero_health -= goblin_power
-# 			print "The goblin does %d damage to you." % goblin_power
-# 			if hero_health <= 0:
-# 				print "You are dead."
-
-# main()
+while hero.is_shopping():
+	print "Take a look around and buy something, why don't ya?";
+	print ""
+	time.sleep(.8);
+	print "< Press a number to purchase an item. Press [0] to leave. >";
+	print ""
+	time.sleep(.8);
+	print "1. Deku Seeds -- 10 R";
+	print ""
+	time.sleep(.2);
+	print "2. Health Potion -- 20 R";
+	print ""
+	time.sleep(.2);
+	print "3. Deku Stick -- 30 R";
+	print ""
+	time.sleep(.2);
+	print "4. Sling Shot -- 100 R";
+	print ""
+	time.sleep(.2);
+	print "5. Deku Shield -- 200 R";
+	print ""
+	time.sleep(.2);
+	print ">";
+	input = int(raw_input());
+	if input == 1:
+		hero.get_item(Item('Deku Seeds', '10'));
+	if input == 2:
+		hero.get_item(Item('Health Potion', '20'));
+	if input == 3:
+		hero.get_item(Item('Deku Stick', '30'));
+	if input == 4:
+		hero.get_item(Item('Sling Shot', '100'));
+	if input == 5:
+		hero.get_item(Item('Deku Shield', '200'));
+	if input == 0:
+		print "See ya later then!";
+		print ""
+		print ""
+		print ""
+		time.sleep(1);
+		break;

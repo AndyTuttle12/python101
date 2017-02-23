@@ -1,8 +1,10 @@
 import time;
 from random import randint;
+from rpg_character import Character;
 
-class Hero(object):
+class Hero(Character):
 	def __init__(self):
+		Character.__init__(self);
 		self.name = 'Link';
 		self.health = 20;
 		self.power = 8;
@@ -10,10 +12,6 @@ class Hero(object):
 		self.damage_roll = 0;
 		self.armor = 9;
 		self.armor_durability = 5;
-	def is_alive(self):
-		return self.health > 0;
-	def has_armor(self):
-		return self.armor_durability > 0;
 	def attack(self, enemy):
 		if self.lucky() > 2:
 			print "%s attacks %s" % (self.name, enemy.name);
@@ -40,6 +38,9 @@ class Hero(object):
 			self.health = self.hit_points;
 		else:
 			self.health -= points_of_damage;
-	def lucky(self):
-		return self.luck * randint(0,1);
+	def get_item(self, item):
+		print "You purchased %s for %s rupees!" % (item.name, item.price)
+		print ""
+	def is_shopping(self):
+		return self;
 
